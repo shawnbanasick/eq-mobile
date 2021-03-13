@@ -1,7 +1,7 @@
 // self.importScripts('data/games.js');
 
 // Files to cache
-const cacheName = "eq-mobile-v1";
+const cacheName = "eq-mobile-v2";
 const appShellFiles = [
   "/eq-mobile/",
   "/eq-mobile/index.html",
@@ -55,6 +55,7 @@ const appShellFiles = [
   "/eq-mobile/apple-launch-1668x2224.png",
 ];
 
+/*
 // Installing Service Worker
 self.addEventListener("install", (e) => {
   console.log("[Service Worker] Install");
@@ -82,3 +83,4 @@ self.addEventListener("fetch", (e) => {
     })()
   );
 });
+*/
