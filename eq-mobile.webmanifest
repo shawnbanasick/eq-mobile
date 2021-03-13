@@ -2,7 +2,14 @@
   "name": "Easy HtmlQ Progressive Web App",
   "short_name": "EQ-Mobile",
   "description": "Progressive Web App for Q Sorting.",
+  "icons": [
+    {
+      "src": "/touch-icon-ipad.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
 
-  "start_url": "/eq-mobile/index.html",
+  "start_url": "/",
   "display": "fullscreen"
 }
