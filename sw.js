@@ -1,7 +1,5 @@
-// self.importScripts('data/games.js');
-
 // Files to cache
-const cacheName = "eq-mobile-v2";
+const cacheName = "eq-mobile-v3";
 const appShellFiles = [
   "/eq-mobile/",
   "/eq-mobile/index.html",
@@ -62,7 +60,13 @@ self.addEventListener("install", (e) => {
     (async () => {
       const cache = await caches.open(cacheName);
       console.log("[Service Worker] Caching all: app shell and content");
-      await cache.addAll(appShellFiles);
+      await cache
+        .addAll(appShellFiles)
+        .then(() => {
+          // At this point, `cache` will be populated with `Response` objects,
+          // and `requests` contains the `Request` objects that were used.
+        })
+        .catch((error) => console.error(`load fail! ${error}`));
     })()
   );
 });
