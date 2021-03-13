@@ -66,6 +66,7 @@ li.draggable {
   text-align: center;
 }
 
+
 .cell.small-font .swappable > div,
 .cell.small-font .draggable-small > div {
   font-size: 0.8em;

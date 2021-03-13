@@ -1872,6 +1872,8 @@ angular
           }
         }
 
+        console.log(JSON.stringify(results));
+
         firebase
           .auth()
           .signInAnonymously()
