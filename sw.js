@@ -55,7 +55,6 @@ const appShellFiles = [
   "/eq-mobile/apple-launch-1668x2224.png",
 ];
 
-/*
 // Installing Service Worker
 self.addEventListener("install", (e) => {
   console.log("[Service Worker] Install");
@@ -83,4 +82,3 @@ self.addEventListener("fetch", (e) => {
     })()
   );
 });
-*/
