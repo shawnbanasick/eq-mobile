@@ -11,5 +11,5 @@
   ],
 
   "start_url": "/eq-mobile/",
-  "display": "fullscreen"
+  "display": "standalone"
 }
