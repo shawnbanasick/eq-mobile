@@ -4,8 +4,8 @@
   "description": "Progressive Web App for Q Sorting.",
   "icons": [
     {
-      "src": "/touch-icon-ipad.png",
-      "sizes": "144x144",
+      "src": "/EQ-Moble-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
