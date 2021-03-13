@@ -1,0 +1,8 @@
+{
+  "name": "Easy HtmlQ Progressive Web App",
+  "short_name": "EQ-Mobile",
+  "description": "Progressive Web App for Q Sorting.",
+
+  "start_url": "/eq-mobile/index.html",
+  "display": "fullscreen"
+}
