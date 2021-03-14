@@ -1894,6 +1894,9 @@ angular
         try {
           var results = makeParamsObject();
           var storedSorts = JSON.parse(localStorage.getItem("storedSorts"));
+          if (storedSorts === null || storedSorts === undefined) {
+            storedSorts = [];
+          }
           console.log(JSON.stringify(storedSorts));
           storedSorts.push(results);
           localStorage.setItem("storedSorts", JSON.stringify(storedSorts));
