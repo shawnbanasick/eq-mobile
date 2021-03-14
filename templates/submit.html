@@ -1,19 +1,47 @@
 <div id="submit">
-    <div class="row">
-        <div class="col-xs-12" ng-class="{textright: textAlignRight}">
-            <h1 ng-bind-html="language.transferHead"></h1>
+  <div class="row">
+    <div class="col-xs-12" ng-class="{textright: textAlignRight}">
+      <h1 ng-bind-html="language.transferHead"></h1>
 
-            <p ng-if="firstTry" ng-bind-html="language.transferText"></p>
-            <p ng-if="!firstTry" ng-bind-html="language.transferFailed"></p>
+      <p ng-if="firstTry" ng-bind-html="language.transferText"></p>
+      <p ng-if="!firstTry" ng-bind-html="language.transferFailed"></p>
 
-            <p ng-if="config.submitUrl">
-                <a href="" ng-click="submitViaHttp()" class="btn btn-primary" ng-bind-html="language.btnTransfer"></a>
-            </p>
+      <div>
+        <p id="offlineSubmitBtn" ng-if="config.submitOfflineBtn">
+          <a href="" ng-click="submitToLocalstorage()" class="btn btn-primary"
+            >Currently Offline - Save to Local Memory</a
+          >
+        </p>
+      </div>
 
-            <span ng-if="!config.submitUrl || !firstTry">
-                <p><a href="mailto:{{ mailReceiver }} ?subject={{ mailSubject | escape }}&body={{ mailText | escape }}" class="btn btn-primary" ng-bind-html="language.btnMail"></a></p>
-                <p><a href="" ui-sref="root.print" class="btn btn-primary" ng-bind-html="language.btnPrint"></a></p>
-            </span>
-        </div>
+      <div ng-if="config.showOnlineSubmit">
+        <p id="onlineSubmitBtn" ng-if="config.submitUrl">
+          <a
+            href=""
+            ng-click="submitViaHttp()"
+            class="btn btn-primary"
+            ng-bind-html="language.btnTransfer"
+          ></a>
+        </p>
+
+        <span ng-if="!config.submitUrl || !firstTry">
+          <p>
+            <a
+              href="mailto:{{ mailReceiver }} ?subject={{ mailSubject | escape }}&body={{ mailText | escape }}"
+              class="btn btn-primary"
+              ng-bind-html="language.btnMail"
+            ></a>
+          </p>
+          <p>
+            <a
+              href=""
+              ui-sref="root.print"
+              class="btn btn-primary"
+              ng-bind-html="language.btnPrint"
+            ></a>
+          </p>
+        </span>
+      </div>
     </div>
+  </div>
 </div>

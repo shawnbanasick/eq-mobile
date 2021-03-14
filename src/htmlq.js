@@ -456,7 +456,7 @@ angular
 
       // insert text font size control functions
       angular.element(document).ready(function () {
-        // Increase Font Size
+        // Increase Sort Grid Cards Font Size
         $(".increase").click(function () {
           var currentSize = $(".fontAdjust").css("font-size");
           var newSize = parseFloat(currentSize) + 1;
@@ -464,7 +464,7 @@ angular
           return false;
         });
 
-        // Decrease Font Size
+        // Decrease Sort Grid Cards Font Size
         $(".decrease").click(function () {
           // var currentFontSize = $(".fontAdjust").css("font-size");
           var currentSize = $(".fontAdjust").css("font-size");
@@ -1202,7 +1202,25 @@ angular
     "$scope",
     "$state",
     function (config, language, UserCode, $http, $scope, $state) {
+      var storedSorts = JSON.parse(localStorage.getItem("storedSorts")) || [];
+      var storedSortsObjLen = storedSorts.length;
+      var storedSortsObjText =
+        storedSortsObjLen + " Sorts Stored in Local Memory";
+
+      console.log(JSON.stringify(storedSorts));
+
       $(".showFontAdjust").hide();
+
+      if (navigator.onLine && storedSortsObjLen > 0) {
+        $("#submitSortsLabel").text(storedSortsObjText);
+        $("#submitSortsLabel").show();
+        $(".submitStored").show();
+      } else {
+        console.log("length: ", storedSortsObjLen);
+        $("#submitSortsLabel").text("No Sorts in Local Memory");
+        $("#submitSortsLabel").show();
+        $(".submitStored").show();
+      }
 
       $scope.showNameInput = config.partNameRequired;
       $scope.user = {};
@@ -1215,6 +1233,41 @@ angular
           ? ""
           : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
+
+      $scope.submitLocalToFirebase = function () {
+        (async function loop() {
+          for (let k = 0; k < 10; k++) {
+            let sort = storedSorts[k];
+
+            await firebase
+              .auth()
+              .signInAnonymously()
+              .then(() => {
+                // Signed in..
+                rootRef.push(sort, function (error) {
+                  if (error) {
+                    console.log("there was an error");
+                    // $stateParams.retry = 1;
+                    // $state.go("root.submit", {
+                    // retry: $stateParams.retry,
+                    // });
+                  } else {
+                    console.log("There was success");
+                    // $state.go("root.thanks");
+                  }
+                });
+              })
+              .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+                console.log(errorCode, errorMessage);
+              }); // end firebase
+          }
+        })();
+
+        //console.log(JSON.stringify(containerObj));
+      };
 
       function loginViaGet(code) {
         return $http.get(config.loginUrl, {
@@ -1754,8 +1807,6 @@ angular
       $stateParams,
       $log
     ) {
-      $(".showFontAdjust").hide();
-
       function makeSortString(sortedStatements) {
         var sorted = [];
         for (var i = 0; i < sortedStatements.length; i++) {
@@ -1833,6 +1884,38 @@ angular
         return ret;
       }
 
+      // var storedSorts = JSON.parse(localStorage.getItem("sortsObject")) || {};
+
+      $(".showFontAdjust").hide();
+
+      $scope.submitToLocalstorage = function () {
+        console.log("save to localStorage");
+        config.submitOfflineBtn = false;
+        try {
+          var results = makeParamsObject();
+          var storedSorts = JSON.parse(localStorage.getItem("storedSorts"));
+          console.log(JSON.stringify(storedSorts));
+          storedSorts.push(results);
+          localStorage.setItem("storedSorts", JSON.stringify(storedSorts));
+          $state.go("root.thanks");
+        } catch (error) {
+          config.submitOfflineBtn = true;
+        }
+      };
+
+      language.btnLocalstorage = "Offline - Save to Local Memory";
+
+      if (navigator.onLine) {
+        // $("#onlineSubmitBtn").hide();
+        // config.showOnlineSubmit = true;
+        config.showOnlineSubmit = false;
+        config.submitOfflineBtn = true;
+      } else {
+        // $("#onlineSubmitBtn").hide();
+        config.showOnlineSubmit = false;
+        config.submitOfflineBtn = true;
+      }
+
       function submitViaGet() {
         return $http.get(config["submitUrl"], {
           params: makeParamsObject(),
@@ -1895,7 +1978,7 @@ angular
             var errorMessage = error.message;
             // ...
             console.log(errorCode, errorMessage);
-          });
+          }); // end firebase
         console.log("submit processed");
       }
 
@@ -2043,7 +2126,15 @@ angular
     },
   ])
 
-  .controller("ThanksCtrl", [function () {}])
+  .controller("ThanksCtrl", [
+    "$scope",
+    "$state",
+    function ($scope, $state) {
+      $scope.returnToControl = function () {
+        $state.go("root.login");
+      };
+    },
+  ])
 
   .service("MessageModal", [
     "$modal",
@@ -2150,7 +2241,7 @@ angular
         if (firstRequest) {
           firstRequest = false;
           event.preventDefault();
-          $state.go("root.welcome");
+          $state.go("root.login");
         }
       });
 

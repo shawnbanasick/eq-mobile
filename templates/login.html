@@ -1,5 +1,6 @@
 <div id="login">
-  <div class="row" style="margin-top: 100px; margin-left: 150px">
+  <h1 style="margin-top: 80px; margin-left: 100px">EQ Mobile Data Collector</h1>
+  <div class="row" style="margin-top: 50px; margin-left: 150px">
     <div class="col-xs-12">
       <h4 ng-bind-html="language.loginHead"></h4>
       <p ng-bind-html="language.loginText"></p>
@@ -39,7 +40,6 @@
               required
             />
           </div>
-
           <button
             type="submit"
             class="btn btn-default"
@@ -47,6 +47,10 @@
           ></button>
         </div>
       </form>
+      <h4 id="submitSortsLabel" style="margin-top: 180px"></h4>
+      <button class="btn btn-info" ng-click="submitLocalToFirebase()">
+        Send Stored Q Sorts to Firebase
+      </button>
     </div>
   </div>
 </div>
