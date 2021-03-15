@@ -1202,6 +1202,11 @@ angular
     "$scope",
     "$state",
     function (config, language, UserCode, $http, $scope, $state) {
+      $("#clearLocalStorageLabel").hide();
+      $("#passwordLabel").hide();
+      $("#passwordInput").hide();
+      $("#clearAppMemoryButton").hide();
+
       var storedSorts = JSON.parse(localStorage.getItem("storedSorts"));
       if (storedSorts === null || storedSorts === undefined) {
         storedSorts = [];
@@ -1231,16 +1236,16 @@ angular
         if (userInput === config.loginPassword) {
           console.log(userInput);
           $("#passwordInput").css("background-color", "white");
+          localStorage.setItem("storedSorts", "[]");
+          $("#numSavedSorts").text("0");
+          $("#clearLocalStorageLabel").hide();
+          $("#passwordLabel").hide();
+          $("#passwordInput").hide();
+          $("#clearAppMemoryButton").hide();
+          $("#submitLocalToFirebaseBtn").hide();
         } else {
           $("#passwordInput").css("background-color", "lightpink");
         }
-
-        // localStorage.setItem("storedSorts", "[]");
-        // $("#numSavedSorts").text("0");
-        // $("#clearLocalStorageLabel").hide();
-        // $("#passwordLabel").hide();
-        // $("#passwordInput").hide();
-        // $("#clearAppMemoryButton").hide();
       };
 
       $scope.showNameInput = config.partNameRequired;
@@ -1271,9 +1276,15 @@ angular
                     if (error) {
                       console.log("there was an error signing in to firebase");
                     } else {
-                      console.log("There was success");
-                      successCounter = successCounter++;
-                      // $state.go("root.thanks");
+                      console.log("There was a successful upload to Firebase");
+                      successCounter += 1;
+                      if (successCounter === storedSorts.length) {
+                        console.log("equal values");
+                        $("#clearLocalStorageLabel").show();
+                        $("#passwordLabel").show();
+                        $("#passwordInput").show();
+                        $("#clearAppMemoryButton").show();
+                      }
                     }
                   });
                 })
@@ -1285,12 +1296,6 @@ angular
                 }); // end firebase
             }
           })();
-        }
-        if (successCounter === storedSorts.length) {
-          $("#clearLocalStorageLabel").show();
-          $("#passwordLabel").show();
-          $("#passwordInput").show();
-          $("#clearAppMemoryButton").show();
         }
       };
 
