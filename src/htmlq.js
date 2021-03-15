@@ -1243,6 +1243,7 @@ angular
           $("#passwordInput").hide();
           $("#clearAppMemoryButton").hide();
           $("#submitLocalToFirebaseBtn").hide();
+          $("#firebaseUploadMessage").text("");
         } else {
           $("#passwordInput").css("background-color", "lightpink");
         }
@@ -1276,10 +1277,12 @@ angular
                     if (error) {
                       console.log("there was an error signing in to firebase");
                     } else {
+                      let firebaseText1 = language.successFirebase;
                       console.log("There was a successful upload to Firebase");
                       successCounter += 1;
                       if (successCounter === storedSorts.length) {
-                        console.log("equal values");
+                        $("#submitLocalToFirebaseBtn").prop("disabled", true);
+                        $("#firebaseUploadMessage").text(firebaseText1);
                         $("#clearLocalStorageLabel").show();
                         $("#passwordLabel").show();
                         $("#passwordInput").show();
@@ -1293,6 +1296,7 @@ angular
                   var errorMessage = error.message;
                   // ...
                   console.log(errorCode, errorMessage);
+                  $("#firebaseUploadMessage").html(language.failureFirebase);
                 }); // end firebase
             }
           })();
@@ -1942,12 +1946,10 @@ angular
       language.btnLocalstorage = "Offline - Save to Local Memory";
 
       if (navigator.onLine) {
-        // $("#onlineSubmitBtn").hide();
-        // config.showOnlineSubmit = true;
         config.showOnlineSubmit = false;
         config.submitOfflineBtn = true;
       } else {
-        // $("#onlineSubmitBtn").hide();
+        // if offline
         config.showOnlineSubmit = false;
         config.submitOfflineBtn = true;
       }

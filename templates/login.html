@@ -1,7 +1,7 @@
 <div
   id="login"
   style="
-    background-image: url('tiles.jpg');
+    background-image: url('gravel.png');
     background-repeat: repeat;
     padding: 5px;
     height: 90vh;
@@ -74,13 +74,23 @@
         id="numSavedSorts"
         style="font-size: 18px; font-weight: 500; margin-left: 15px"
       ></span>
+      <br />
       <button
         id="submitLocalToFirebaseBtn"
         class="btn btn-default"
         ng-click="submitLocalToFirebase()"
         ng-bind-html="language.sendToFirebase"
-        style="display: block; margin-top: 5px"
+        style="
+          display: inline-block;
+          margin-top: 5px;
+          background-color: #209cee;
+          color: white;
+        "
       ></button>
+      <span
+        id="firebaseUploadMessage"
+        style="display: inline-block; margin-top: 5px; margin-left: 10px"
+      ></span>
       <span
         id="clearLocalStorageLabel"
         ng-bind-html="language.clearMemoryLabel"
@@ -106,7 +116,12 @@
       <button
         class="btn btn-default"
         id="clearAppMemoryButton"
-        style="margin-left: 90px; margin-top: 10px"
+        style="
+          margin-left: 30px;
+          margin-top: 0px;
+          background-color: #209cee;
+          color: white;
+        "
         ng-click="clearLocalstorage()"
         ng-bind-html="language.clearIpadMemory"
       ></button>

@@ -40,9 +40,11 @@
         <!-- Login - EQ Mobile Data Collector Only -->
         <item id="sortsInMemory">Q Sorts Stored in iPad Memory:</item>
         <item id="sendToFirebase">Send Stored Q Sorts to Firebase</item>
-        <item id="clearIpadMemory">Clear App Memory and Permanently Remove Sorts from iPad</item>
-        <item id="successFirebase">Success - Stored Q Sorts Successfully Sent to Firebase:</item>
-        <item id="clearMemoryLabel">Enter Access Code and Click Button to Clear Memory</item>
+        <item id="clearIpadMemory">Clear App Memory</item>
+        <item id="clearMemoryLabel">Enter Access Code and Click Button to Permanently Remove Stored Q Sorts</item>
+        <item id="successFirebase">Success - All Stored Q Sorts Successfully Sent to Firebase</item>
+        <item id="failureFirebase">There was a transmission error, try again</item>
+
 
         <!-- introduction (leave blank to skip popup) -->
         <item id="introHead">Introduction</item>
