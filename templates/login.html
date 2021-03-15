@@ -63,7 +63,7 @@
       <span
         id="submitSortsLabel"
         style="
-          margin-top: 80px;
+          margin-top: 50px;
           display: inline-block;
           font-size: 18px;
           font-weight: 500;
@@ -80,9 +80,30 @@
         ng-bind-html="language.sendToFirebase"
         style="display: block; margin-top: 5px"
       ></button>
-      <h4 id="submitSortsLabel" style="margin-top: 50px"></h4>
+      <span
+        id="clearLocalStoreageLabel"
+        ng-bind-html="language.clearMemoryLabel"
+        style="
+          display: block;
+          font-size: 18px;
+          font-weight: 500;
+          margin-top: 60px;
+        "
+      ></span>
+      <label
+        for="password"
+        ng-bind-html="language.loginFormHeader"
+        style="margin-top: 10px; display: inline-block"
+      ></label>
+      <input
+        class="form-control"
+        id="password"
+        autocomplete="off"
+        style="width: 400px; display: inline-block"
+      />
       <button
         class="btn btn-default"
+        style="margin-left: 90px; margin-top: 10px"
         ng-click="clearLocalstorage()"
         ng-bind-html="language.clearIpadMemory"
       ></button>
