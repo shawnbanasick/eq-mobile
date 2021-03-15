@@ -31,12 +31,12 @@
         <div class="form-group">
           <label for="usercode" ng-bind-html="language.loginFormHeader"></label>
           <input
+            autocapitalize="off"
+            type="password"
             class="form-control"
             id="usercode"
             ng-model="usercode"
             autocomplete="off"
-            TextMode="Password"
-            autocapitalize="off"
             style="width: 400px"
           />
           <div class="userNameDiv">
@@ -110,10 +110,10 @@
         style="margin-top: 10px; display: inline-block"
       ></label>
       <input
+        autocapitalize="off"
+        type="password"
         id="passwordInput"
         autocomplete="off"
-        TextMode="Password"
-        autocapitalize="off"
         style="width: 400px; display: inline-block"
       />
       <button
