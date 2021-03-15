@@ -1510,6 +1510,9 @@ angular
     ) {
       $(".showFontAdjust").show();
 
+      console.log(config.partId);
+      $("#partIdLabel").html(config.partId);
+
       $scope.help = function () {
         MessageModal.show(
           messageHead,
