@@ -1,5 +1,16 @@
-<div id="login">
-  <h1 style="margin-top: 80px; margin-left: 100px">EQ Mobile Data Collector</h1>
+<div
+  id="login"
+  style="
+    background-image: url('tiles.jpg');
+    background-repeat: repeat;
+    padding: 5px;
+    height: 90vh;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin-top: 10px;
+  "
+>
+  <h1 style="margin-left: 100px">EQ Mobile Data Collector</h1>
   <div class="row" style="margin-top: 50px; margin-left: 150px">
     <div class="col-xs-12">
       <h4 ng-bind-html="language.loginHead"></h4>
@@ -24,6 +35,7 @@
             id="usercode"
             ng-model="usercode"
             autocomplete="off"
+            style="width: 400px"
           />
           <div class="userNameDiv">
             <label
@@ -37,6 +49,7 @@
               ng-model="user.PartName"
               autocomplete="off"
               ng-if="showNameInput"
+              style="width: 400px"
               required
             />
           </div>
@@ -47,14 +60,32 @@
           ></button>
         </div>
       </form>
-      <h4 id="submitSortsLabel" style="margin-top: 180px"></h4>
-      <button class="btn btn-info" ng-click="submitLocalToFirebase()">
-        Send Stored Q Sorts to Firebase
-      </button>
-      <h4 id="submitSortsLabel" style="margin-top: 80px"></h4>
-      <button class="btn btn-info" ng-click="clearLocalstorage()">
-        Clear Memory and Delete Sorts?
-      </button>
+      <span
+        id="submitSortsLabel"
+        style="
+          margin-top: 80px;
+          display: inline-block;
+          font-size: 18px;
+          font-weight: 500;
+        "
+        ng-bind-html="language.sortsInMemory"
+      ></span
+      ><span
+        id="numSavedSorts"
+        style="font-size: 18px; font-weight: 500; margin-left: 15px"
+      ></span>
+      <button
+        class="btn btn-default"
+        ng-click="submitLocalToFirebase()"
+        ng-bind-html="language.sendToFirebase"
+        style="display: block; margin-top: 5px"
+      ></button>
+      <h4 id="submitSortsLabel" style="margin-top: 50px"></h4>
+      <button
+        class="btn btn-default"
+        ng-click="clearLocalstorage()"
+        ng-bind-html="language.clearIpadMemory"
+      ></button>
     </div>
   </div>
 </div>

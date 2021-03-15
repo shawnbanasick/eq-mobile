@@ -29,7 +29,6 @@
      <item id="showStep3">false</item>
      <item id="showStep4">false</item>
      <item id="showStep5">false</item>
-
      <!-- HtmlQ only: disable the in-window back button -->
      <item id="disableBackButton">true</item>
 

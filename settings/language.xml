@@ -37,6 +37,11 @@
         <item id="loginNoInput">Please insert the access code.</item>
         <item id="loginInvalidInput">Access code invalid</item>
         <item id="loginNoConnection">Connection to server failed. Please try again.</item>
+        <!-- Login - EQ Mobile Data Collector Only -->
+        <item id="sortsInMemory">Q Sorts Stored in iPad Memory:</item>
+        <item id="sendToFirebase">Send Stored Q Sorts to Firebase</item>
+        <item id="clearIpadMemory">Clear App Memory and Permanently Remove Sorts from iPad</item>
+        <item id="successFirebase">Success - Stored Q Sorts Successfully Sent to Firebase:</item>
 
         <!-- introduction (leave blank to skip popup) -->
         <item id="introHead">Introduction</item>

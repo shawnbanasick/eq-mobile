@@ -1202,25 +1202,39 @@ angular
     "$scope",
     "$state",
     function (config, language, UserCode, $http, $scope, $state) {
-      var storedSorts = JSON.parse(localStorage.getItem("storedSorts")) || [];
-      var storedSortsObjLen = storedSorts.length;
-      var storedSortsObjText =
-        storedSortsObjLen + " Sorts Stored in Local Memory";
+      angular.forEach($state.get(), function (state) {
+        console.log(JSON.stringify(state, null, 2));
+      });
+
+      var storedSorts = JSON.parse(localStorage.getItem("storedSorts"));
+      if (storedSorts === null || storedSorts === undefined) {
+        storedSorts = [];
+      }
+      var storedSortsArrayLen = storedSorts.length;
+      var storedSortsArrayText =
+        storedSortsArrayLen + " Sorts Stored in iPad Memory";
 
       console.log(JSON.stringify(storedSorts));
 
       $(".showFontAdjust").hide();
+      $("#numSavedSorts").text(storedSortsArrayLen);
 
-      if (navigator.onLine && storedSortsObjLen > 0) {
-        $("#submitSortsLabel").text(storedSortsObjText);
+      if (navigator.onLine && storedSortsArrayLen > 0) {
+        $("#submitSortsLabel").text(storedSortsArrayText);
         $("#submitSortsLabel").show();
         $(".submitStored").show();
       } else {
-        console.log("length: ", storedSortsObjLen);
-        $("#submitSortsLabel").text("No Sorts in Local Memory");
+        console.log("length: ", storedSortsArrayLen);
+        // $("#submitSortsLabel").text("No Sorts in iPad Memory");
         $("#submitSortsLabel").show();
         $(".submitStored").show();
       }
+
+      $scope.clearLocalstorage = function () {
+        console.log("clicked");
+        localStorage.setItem("storedSorts", "[]");
+        $("#numSavedSorts").text("0");
+      };
 
       $scope.showNameInput = config.partNameRequired;
       $scope.user = {};
@@ -1235,38 +1249,38 @@ angular
       }
 
       $scope.submitLocalToFirebase = function () {
-        (async function loop() {
-          for (let k = 0; k < 10; k++) {
-            let sort = storedSorts[k];
+        if (storedSorts.length > 0) {
+          (async function loop() {
+            for (let k = 0; k < 10; k++) {
+              let sort = storedSorts[k];
 
-            await firebase
-              .auth()
-              .signInAnonymously()
-              .then(() => {
-                // Signed in..
-                rootRef.push(sort, function (error) {
-                  if (error) {
-                    console.log("there was an error");
-                    // $stateParams.retry = 1;
-                    // $state.go("root.submit", {
-                    // retry: $stateParams.retry,
-                    // });
-                  } else {
-                    console.log("There was success");
-                    // $state.go("root.thanks");
-                  }
-                });
-              })
-              .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ...
-                console.log(errorCode, errorMessage);
-              }); // end firebase
-          }
-        })();
-
-        //console.log(JSON.stringify(containerObj));
+              await firebase
+                .auth()
+                .signInAnonymously()
+                .then(() => {
+                  // Signed in..
+                  rootRef.push(sort, function (error) {
+                    if (error) {
+                      console.log("there was an error");
+                      // $stateParams.retry = 1;
+                      // $state.go("root.submit", {
+                      // retry: $stateParams.retry,
+                      // });
+                    } else {
+                      console.log("There was success");
+                      // $state.go("root.thanks");
+                    }
+                  });
+                })
+                .catch((error) => {
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  // ...
+                  console.log(errorCode, errorMessage);
+                }); // end firebase
+            }
+          })();
+        }
       };
 
       function loginViaGet(code) {
@@ -2132,9 +2146,11 @@ angular
   .controller("ThanksCtrl", [
     "$scope",
     "$state",
-    function ($scope, $state) {
+    "config",
+    function ($scope, $state, config) {
       $scope.returnToControl = function () {
         $state.go("root.login");
+        document.location.reload();
       };
     },
   ])
