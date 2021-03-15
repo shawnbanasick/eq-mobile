@@ -8,7 +8,11 @@
 
       <div>
         <p id="offlineSubmitBtn" ng-if="config.submitOfflineBtn">
-          <a href="" ng-click="submitToLocalstorage()" class="btn btn-primary"
+          <a
+            href=""
+            ng-click="submitToLocalstorage()"
+            class="btn btn-default"
+            style="background-color: #209cee; color: white"
             >Currently Offline - Save to Local Memory</a
           >
         </p>
@@ -19,28 +23,11 @@
           <a
             href=""
             ng-click="submitViaHttp()"
-            class="btn btn-primary"
+            class="btn btn-default"
             ng-bind-html="language.btnTransfer"
+            style="background-color: #209cee; color: white"
           ></a>
         </p>
-
-        <span ng-if="!config.submitUrl || !firstTry">
-          <p>
-            <a
-              href="mailto:{{ mailReceiver }} ?subject={{ mailSubject | escape }}&body={{ mailText | escape }}"
-              class="btn btn-primary"
-              ng-bind-html="language.btnMail"
-            ></a>
-          </p>
-          <p>
-            <a
-              href=""
-              ui-sref="root.print"
-              class="btn btn-primary"
-              ng-bind-html="language.btnPrint"
-            ></a>
-          </p>
-        </span>
       </div>
     </div>
   </div>
