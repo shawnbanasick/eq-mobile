@@ -1946,8 +1946,8 @@ angular
       language.btnLocalstorage = "Offline - Save to Local Memory";
 
       if (navigator.onLine) {
-        config.showOnlineSubmit = false;
-        config.submitOfflineBtn = true;
+        config.showOnlineSubmit = true;
+        config.submitOfflineBtn = false;
       } else {
         // if offline
         config.showOnlineSubmit = false;
