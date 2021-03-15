@@ -75,13 +75,14 @@
         style="font-size: 18px; font-weight: 500; margin-left: 15px"
       ></span>
       <button
+        id="submitLocalToFirebaseBtn"
         class="btn btn-default"
         ng-click="submitLocalToFirebase()"
         ng-bind-html="language.sendToFirebase"
         style="display: block; margin-top: 5px"
       ></button>
       <span
-        id="clearLocalStoreageLabel"
+        id="clearLocalStorageLabel"
         ng-bind-html="language.clearMemoryLabel"
         style="
           display: block;
@@ -92,17 +93,19 @@
       ></span>
       <label
         for="password"
+        id="passwordLabel"
         ng-bind-html="language.loginFormHeader"
         style="margin-top: 10px; display: inline-block"
       ></label>
       <input
         class="form-control"
-        id="password"
+        id="passwordInput"
         autocomplete="off"
         style="width: 400px; display: inline-block"
       />
       <button
         class="btn btn-default"
+        id="clearAppMemoryButton"
         style="margin-left: 90px; margin-top: 10px"
         ng-click="clearLocalstorage()"
         ng-bind-html="language.clearIpadMemory"

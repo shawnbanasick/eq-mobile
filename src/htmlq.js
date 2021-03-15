@@ -1202,10 +1202,6 @@ angular
     "$scope",
     "$state",
     function (config, language, UserCode, $http, $scope, $state) {
-      angular.forEach($state.get(), function (state) {
-        console.log(JSON.stringify(state, null, 2));
-      });
-
       var storedSorts = JSON.parse(localStorage.getItem("storedSorts"));
       if (storedSorts === null || storedSorts === undefined) {
         storedSorts = [];
@@ -1214,26 +1210,37 @@ angular
       var storedSortsArrayText =
         storedSortsArrayLen + " Sorts Stored in iPad Memory";
 
-      console.log(JSON.stringify(storedSorts));
+      // console.log(JSON.stringify(storedSorts));
 
       $(".showFontAdjust").hide();
       $("#numSavedSorts").text(storedSortsArrayLen);
 
       if (navigator.onLine && storedSortsArrayLen > 0) {
-        $("#submitSortsLabel").text(storedSortsArrayText);
-        $("#submitSortsLabel").show();
-        $(".submitStored").show();
+        // $("#submitSortsLabel").hide();
+        // $("#numSavedSorts").hide();
+        $("#submitLocalToFirebaseBtn").show();
       } else {
-        console.log("length: ", storedSortsArrayLen);
+        // if offline
         // $("#submitSortsLabel").text("No Sorts in iPad Memory");
-        $("#submitSortsLabel").show();
-        $(".submitStored").show();
+        $("#submitLocalToFirebaseBtn").hide();
       }
 
       $scope.clearLocalstorage = function () {
-        console.log("clicked");
-        localStorage.setItem("storedSorts", "[]");
-        $("#numSavedSorts").text("0");
+        var userInput = $("#passwordInput").val();
+
+        if (userInput === config.loginPassword) {
+          console.log(userInput);
+          $("#passwordInput").css("background-color", "white");
+        } else {
+          $("#passwordInput").css("background-color", "lightpink");
+        }
+
+        // localStorage.setItem("storedSorts", "[]");
+        // $("#numSavedSorts").text("0");
+        // $("#clearLocalStorageLabel").hide();
+        // $("#passwordLabel").hide();
+        // $("#passwordInput").hide();
+        // $("#clearAppMemoryButton").hide();
       };
 
       $scope.showNameInput = config.partNameRequired;
@@ -1249,6 +1256,7 @@ angular
       }
 
       $scope.submitLocalToFirebase = function () {
+        let successCounter = 0;
         if (storedSorts.length > 0) {
           (async function loop() {
             for (let k = 0; k < 10; k++) {
@@ -1261,13 +1269,10 @@ angular
                   // Signed in..
                   rootRef.push(sort, function (error) {
                     if (error) {
-                      console.log("there was an error");
-                      // $stateParams.retry = 1;
-                      // $state.go("root.submit", {
-                      // retry: $stateParams.retry,
-                      // });
+                      console.log("there was an error signing in to firebase");
                     } else {
                       console.log("There was success");
+                      successCounter = successCounter++;
                       // $state.go("root.thanks");
                     }
                   });
@@ -1280,6 +1285,12 @@ angular
                 }); // end firebase
             }
           })();
+        }
+        if (successCounter === storedSorts.length) {
+          $("#clearLocalStorageLabel").show();
+          $("#passwordLabel").show();
+          $("#passwordInput").show();
+          $("#clearAppMemoryButton").show();
         }
       };
 
