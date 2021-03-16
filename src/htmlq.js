@@ -1220,7 +1220,7 @@ angular
       $(".showFontAdjust").hide();
       $("#numSavedSorts").text(storedSortsArrayLen);
 
-      if (navigator.onLine && storedSortsArrayLen > 0) {
+      if (storedSortsArrayLen > 0) {
         // $("#submitSortsLabel").hide();
         // $("#numSavedSorts").hide();
         $("#submitLocalToFirebaseBtn").show();
@@ -1262,44 +1262,52 @@ angular
       }
 
       $scope.submitLocalToFirebase = function () {
-        let successCounter = 0;
-        if (storedSorts.length > 0) {
-          (async function loop() {
-            for (let k = 0; k < 10; k++) {
-              let sort = storedSorts[k];
+        if (navigator.onLine === true) {
+          let successCounter = 0;
+          if (storedSorts.length > 0) {
+            (async function loop() {
+              for (let k = 0; k < 10; k++) {
+                let sort = storedSorts[k];
 
-              await firebase
-                .auth()
-                .signInAnonymously()
-                .then(() => {
-                  // Signed in..
-                  rootRef.push(sort, function (error) {
-                    if (error) {
-                      console.log("there was an error signing in to firebase");
-                    } else {
-                      let firebaseText1 = language.successFirebase;
-                      console.log("There was a successful upload to Firebase");
-                      successCounter += 1;
-                      if (successCounter === storedSorts.length) {
-                        $("#submitLocalToFirebaseBtn").prop("disabled", true);
-                        $("#firebaseUploadMessage").text(firebaseText1);
-                        $("#clearLocalStorageLabel").show();
-                        $("#passwordLabel").show();
-                        $("#passwordInput").show();
-                        $("#clearAppMemoryButton").show();
+                await firebase
+                  .auth()
+                  .signInAnonymously()
+                  .then(() => {
+                    // Signed in..
+                    rootRef.push(sort, function (error) {
+                      if (error) {
+                        console.log(
+                          "there was an error signing in to firebase"
+                        );
+                      } else {
+                        let firebaseText1 = language.successFirebase;
+                        console.log(
+                          "There was a successful upload to Firebase"
+                        );
+                        successCounter += 1;
+                        if (successCounter === storedSorts.length) {
+                          $("#submitLocalToFirebaseBtn").prop("disabled", true);
+                          $("#firebaseUploadMessage").text(firebaseText1);
+                          $("#clearLocalStorageLabel").show();
+                          $("#passwordLabel").show();
+                          $("#passwordInput").show();
+                          $("#clearAppMemoryButton").show();
+                        }
                       }
-                    }
-                  });
-                })
-                .catch((error) => {
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  // ...
-                  console.log(errorCode, errorMessage);
-                  $("#firebaseUploadMessage").html(language.failureFirebase);
-                }); // end firebase
-            }
-          })();
+                    });
+                  })
+                  .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // ...
+                    console.log(errorCode, errorMessage);
+                    $("#firebaseUploadMessage").html(language.failureFirebase);
+                  }); // end firebase
+              }
+            })();
+          }
+        } else {
+          $("#firebaseUploadMessage").html(language.failureFirebase);
         }
       };
 

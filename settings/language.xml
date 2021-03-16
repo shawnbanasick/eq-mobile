@@ -43,7 +43,7 @@
         <item id="clearIpadMemory">Clear App Memory</item>
         <item id="clearMemoryLabel">Enter Access Code and Click Button to Permanently Remove Stored Q Sorts</item>
         <item id="successFirebase">Success - All Stored Q Sorts Successfully Sent to Firebase</item>
-        <item id="failureFirebase">There was a transmission error, try again</item>
+        <item id="failureFirebase">There was a transmission error, try again later</item>
 
 
         <!-- introduction (leave blank to skip popup) -->
