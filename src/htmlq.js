@@ -1301,13 +1301,22 @@ angular
                     var errorMessage = error.message;
                     // ...
                     console.log(errorCode, errorMessage);
-                    $("#firebaseUploadMessage").html(language.failureFirebase);
+                    var $message1 = $("#firebaseUploadMessage");
+                    $message1.html(language.failureFirebase);
+                    setTimeout(function () {
+                      $.message1.html("");
+                    }, 3000);
                   }); // end firebase
               }
             })();
           }
         } else {
-          $("#firebaseUploadMessage").html(language.failureFirebase);
+          // if navigator.onLine === false
+          var $message2 = $("#firebaseUploadMessage");
+          $message2.html(language.failureFirebase);
+          setTimeout(function () {
+            $.message2.html("");
+          }, 3000);
         }
       };
 
