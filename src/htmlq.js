@@ -2028,9 +2028,9 @@ angular
         } else if (config["submitUrlMethod"].toLowerCase() === "post") {
           promise = submitViaPost();
         } else {
-          // debounce(submitViaFirebase(), 3000, true);
+          //submitViaFirebase();
           $("#onlineSubmitLink").removeAttr("href");
-          submitViaFirebase();
+          debounce(submitViaFirebase(), 5000, true);
           return;
         }
 
