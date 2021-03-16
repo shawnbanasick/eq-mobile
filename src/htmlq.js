@@ -2012,6 +2012,7 @@ angular
             });
           })
           .catch((error) => {
+            $("#onlineSubmitBtn").prop("disabled", false);
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
@@ -2021,6 +2022,7 @@ angular
       }
 
       $scope.submitViaHttp = function () {
+        $("#onlineSubmitBtn").prop("disabled", true);
         var promise;
         if (config["submitUrlMethod"].toLowerCase() === "get") {
           promise = submitViaGet();
