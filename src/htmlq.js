@@ -1225,7 +1225,7 @@ angular
         // $("#numSavedSorts").hide();
         $("#submitLocalToFirebaseBtn").show();
       } else {
-        // if offline
+        // if not saved sorts
         // $("#submitSortsLabel").text("No Sorts in iPad Memory");
         $("#submitLocalToFirebaseBtn").hide();
       }
@@ -1302,9 +1302,9 @@ angular
                     // ...
                     console.log(errorCode, errorMessage);
                     var $message1 = $("#firebaseUploadMessage");
-                    $message1.html(language.failureFirebase);
+                    $message1.text(language.failureFirebase);
                     setTimeout(function () {
-                      $.message1.html("");
+                      $message1.text("");
                     }, 3000);
                   }); // end firebase
               }
@@ -1312,10 +1312,12 @@ angular
           }
         } else {
           // if navigator.onLine === false
+          console.log("navigator.onLine === false");
+
           var $message2 = $("#firebaseUploadMessage");
-          $message2.html(language.failureFirebase);
+          $message2.text(language.failureFirebase);
           setTimeout(function () {
-            $.message2.html("");
+            $message2.text("");
           }, 3000);
         }
       };
