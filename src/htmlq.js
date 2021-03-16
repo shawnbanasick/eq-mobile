@@ -2012,7 +2012,7 @@ angular
             });
           })
           .catch((error) => {
-            $("#onlineSubmitLink").attr("href", "");
+            $("#onlineSubmitLink").css("pointer-events", "auto");
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
@@ -2021,7 +2021,9 @@ angular
         console.log("submit processed");
       }
 
-      $scope.submitViaHttp = function (e) {
+      $scope.submitViaHttp = function () {
+        $("#onlineSubmitLink").css("pointer-events", "none");
+
         var promise;
         if (config["submitUrlMethod"].toLowerCase() === "get") {
           promise = submitViaGet();
@@ -2029,7 +2031,6 @@ angular
           promise = submitViaPost();
         } else {
           //submitViaFirebase();
-          $("#onlineSubmitLink").removeAttr("href");
           debounce(submitViaFirebase(), 5000, true);
           return;
         }
