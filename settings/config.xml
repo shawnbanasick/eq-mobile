@@ -27,8 +27,8 @@
      <item id="constantCardWidth">200</item>
      <!-- activate/deactivate optional steps (true|false) -->
      <item id="showStep3">true</item>
-     <item id="showStep4">false</item>
-     <item id="showStep5">false</item>
+     <item id="showStep4">true</item>
+     <item id="showStep5">true</item>
      <!-- HtmlQ only: disable the in-window back button -->
      <item id="disableBackButton">true</item>
 
