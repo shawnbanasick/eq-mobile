@@ -1,10 +1,10 @@
 If you need the Version 1 files for compatibility reasons, the files are here: [(legacy version)](https://github.com/shawnbanasick/easy-htmlq-legacy) . 
 
 
-# Easy HtmlQ Version 2
+# EQ Mobile Version 2.0.1
 
 
-## Try the [demo project](https://shawnbanasick.github.io/easy-htmlq/#/)
+## Try the [demo project](https://shawnbanasick.github.io/eq-mobile/)
 
 Pre-Sorting
 <p align="center">
@@ -39,4 +39,4 @@ Starting with version 2.0.0 there are now four project access options.
 
 ## License
 
-Easy HtmlQ is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+EQ Mobile is released under the [MIT License](http://www.opensource.org/licenses/MIT).
