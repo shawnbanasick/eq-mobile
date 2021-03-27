@@ -1,7 +1,7 @@
 If you need the Version 1 files for compatibility reasons, the files are here: [(legacy version)](https://github.com/shawnbanasick/easy-htmlq-legacy) . 
 
 
-# EQ Mobile Version 2.0.1 ([download](https://shawnbanasick.github.io/eq-mobile/))
+# EQ Mobile Version 2.0.1 ([download])
 
 
 ## Try the [demo project](https://shawnbanasick.github.io/eq-mobile/)
