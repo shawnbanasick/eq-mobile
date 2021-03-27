@@ -1280,7 +1280,7 @@ angular
                           "there was an error signing in to firebase"
                         );
                       } else {
-                        let firebaseText1 = language.successFirebase;
+                        let firebaseText1 = language.loginFirebaseSuccess;
                         console.log(
                           "There was a successful upload to Firebase"
                         );
@@ -1302,7 +1302,7 @@ angular
                     // ...
                     console.log(errorCode, errorMessage);
                     var $message1 = $("#firebaseUploadMessage");
-                    $message1.text(language.failureFirebase);
+                    $message1.text(language.loginNoConnection);
                     setTimeout(function () {
                       $message1.text("");
                     }, 3000);
@@ -1315,7 +1315,7 @@ angular
           console.log("navigator.onLine === false");
 
           var $message2 = $("#firebaseUploadMessage");
-          $message2.text(language.failureFirebase);
+          $message2.text(language.loginNoConnection);
           setTimeout(function () {
             $message2.text("");
           }, 3000);
@@ -2031,7 +2031,9 @@ angular
             });
           })
           .catch((error) => {
-            $("#onlineSubmitLink").css("pointer-events", "auto");
+            // $("#onlineSubmitLink").css("pointer-events", "auto");
+            $("#onlineSubmitLink").prop("disabled", false);
+
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
@@ -2041,7 +2043,8 @@ angular
       }
 
       $scope.submitViaHttp = function () {
-        $("#onlineSubmitLink").css("pointer-events", "none");
+        // $("#onlineSubmitLink").css("pointer-events", "none");
+        $("#onlineSubmitLink").prop("disabled", true);
 
         var promise;
         if (config["submitUrlMethod"].toLowerCase() === "get") {

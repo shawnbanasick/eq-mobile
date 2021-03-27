@@ -13,8 +13,8 @@
   <h1 style="margin-left: 100px">EQ Mobile Data Collector</h1>
   <div class="row" style="margin-top: 50px; margin-left: 150px">
     <div class="col-xs-12">
-      <h4 ng-bind-html="language.loginHead"></h4>
-      <p ng-bind-html="language.loginText"></p>
+      <h4 ng-bind-html="language.loginRememberAutolock"></h4>
+      <p ng-bind-html="language.loginDoScreenCapture"></p>
 
       <div
         class="alert alert-danger"
@@ -70,7 +70,7 @@
           font-size: 18px;
           font-weight: 500;
         "
-        ng-bind-html="language.sortsInMemory"
+        ng-bind-html="language.loginQsortsStored"
       ></span
       ><span
         id="numSavedSorts"
@@ -81,7 +81,7 @@
         id="submitLocalToFirebaseBtn"
         class="btn btn-default"
         ng-click="submitLocalToFirebase()"
-        ng-bind-html="language.sendToFirebase"
+        ng-bind-html="language.loginSendQsortsToFirebase"
         style="display: inline-block; margin-top: 5px"
       ></button>
       <span
@@ -90,7 +90,7 @@
       ></span>
       <span
         id="clearLocalStorageLabel"
-        ng-bind-html="language.clearMemoryLabel"
+        ng-bind-html="language.loginDeleteLocalQsorts"
         style="
           display: block;
           font-size: 18px;
@@ -121,7 +121,7 @@
           color: white;
         "
         ng-click="clearLocalstorage()"
-        ng-bind-html="language.clearIpadMemory"
+        ng-bind-html="language.loginClearAppMemory"
       ></button>
     </div>
   </div>

@@ -34,37 +34,41 @@
         <item id="loginText">Please enter the access code for this survey.</item>
         <item id="loginFormHeader">Access Code</item>
         <item id="loginPartIdText">Your name or survey id number</item>
-        <item id="loginNoInput">Please insert the access code.</item>
+        <item id="loginNoInput">Please enter the access code.</item>
         <item id="loginInvalidInput">Access code invalid</item>
         <item id="loginNoConnection">Connection to server failed. Please try again.</item>
-        <!-- Login - EQ Mobile Data Collector Only -->
-        <item id="sortsInMemory">Q Sorts Stored in iPad Memory:</item>
-        <item id="sendToFirebase">Send Stored Q Sorts to Firebase</item>
-        <item id="clearIpadMemory">Clear App Memory</item>
-        <item id="clearMemoryLabel">Enter Access Code and Click Button to Permanently Remove Stored Q Sorts</item>
-        <item id="successFirebase">Success - All Stored Q Sorts Successfully Sent to Firebase</item>
-        <item id="failureFirebase">There was a transmission error, try again later</item>
 
+        <!-- EQ Mobile Controls Language, only displayed if Mobile is selected -->
+        <item id="loginQsortsStored">Q Sorts Stored in Local Memory</item>
+        <item id="loginSaveToLocalMemory">Currently Offline - Save to Local Memory</item>
+        <item id="loginReturnToControl">Return to Control Screen</item>
+        <item id="loginSendQsortsToFirebase">Send Stored Q Sorts to Firebase</item>
+        <item id="loginFirebaseSuccess">Success - All Stored Q Sorts Sent to Firebase</item>
+        <item id="loginClearAppMemory">Clear App Memory</item>
+        <item id="loginRememberAutolock">Remember to Turn Off Auto Screen Lock Before Start</item>
+        <item id="loginDoScreenCapture">Always Do a Screen Capture of Q Sorts as Backup</item>
+        <item id="loginDeleteLocalQsorts">Enter Access Code to Permanently Remove Locally Stored Q Sorts</item>
 
+    
         <!-- introduction (leave blank to skip popup) -->
         <item id="introHead">Introduction</item>
         <item id="introText">This study is about iPad use in the classroom.</item>
 
         <!-- step1: rough sorting into three piles (leave blank to skip popup)-->
         <item id="step1Head">Step 1 of 5</item>
-        <item id="step1Text">Read the folowing statements carefully and split them up into three piles: a pile for statements you tend to disagree with, a pile for cards you tend to agree with, and a pile for the rest.{br}{br}You can either drag the cards into one of the three piles or {b}press 1, 2, 3{/b} on your keyboard. Changes can be made later.{br}{br}If you want to read this instruction a second time, press the help-button at the bottom left corner.</item>
+        <item id="step1Text">Read the following statements carefully and split them up into three piles: a pile for statements you tend to disagree with, a pile for cards you tend to agree with, and a pile for the rest.{br}{br}You can either drag the cards into one of the three piles or {b}press 1, 2, 3{/b} on your keyboard. Changes can be made later.{br}{br}If you want to read this instruction a second time, press the help-button at the bottom left corner.</item>
 
         <!-- step2: sorting (leave blank to skip popup) -->
         <item id="step2Head">Step 2 of 5</item>
-        <item id="step2Text">Take the cards from the "AGREE"-pile and arrange them on right side of the score sheet.{br}{br}Next, take the cards from the "DISAGREE"-pile and arrange them on the left side of the score sheet. Follow this procedure for all cards in the "AGREE"- and "DIAGREE"-piles.{br}{br}Finally, take the "NEUTRAL"-cards arange them in the remaining open boxes of the score sheet.</item>
-        <item id="step2CondOfInstruc">Sort the cards according to your experience with the iPads this semester</item>
-        <item id="step2TextSizeLabel">text size</item>
+        <item id="step2Text">Take the cards from the "AGREE"-pile and arrange them on right side of the score sheet.{br}{br}Next, take the cards from the "DISAGREE"-pile and arrange them on the left side of the score sheet. Follow this procedure for all cards in the "AGREE"- and "DISAGREE"-piles.{br}{br}Finally, take the "NEUTRAL"-cards arrange them in the remaining open boxes of the score sheet.</item>
+        <item id="step2CondOfInstruc">Give condition of instruction here</item>
+        <item id="step2TextSizeLabel">Text</item>
         
 
         <!-- step3: check sorting, only displayed if showStep3== true (see config-file; leave blank to skip popup)-->
         <item id="step3Head">Step 3 of 5</item>
         <item id="step3Text">Now you have placed all cards on the score sheet. Please go over your distribution once more and swap card positions cards if desired.</item>
-        <item id="step3CondOfInstruc">Sort the cards according to your experience with the iPads this semester</item>
+        <item id="step3CondOfInstruc">Give condition of instruction here</item>
 
         <!-- step4: comments on best/worst rated statements, only displayed if showStep4== true (see config-file; leave blank to skip popup) -->
         <item id="step4Head">Step 4 of 5</item>
