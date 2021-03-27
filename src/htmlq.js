@@ -1265,6 +1265,8 @@ angular
         if (navigator.onLine === true) {
           let successCounter = 0;
           if (storedSorts.length > 0) {
+            $scope.storedButtonClicked = true;
+
             (async function loop() {
               for (let k = 0; k < 10; k++) {
                 let sort = storedSorts[k];
@@ -1276,6 +1278,8 @@ angular
                     // Signed in..
                     rootRef.push(sort, function (error) {
                       if (error) {
+                        $scope.storedButtonClicked = false;
+
                         console.log(
                           "there was an error signing in to firebase"
                         );
@@ -1297,6 +1301,8 @@ angular
                     });
                   })
                   .catch((error) => {
+                    $scope.storedButtonClicked = false;
+
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     // ...
