@@ -2044,6 +2044,7 @@ angular
 
       $scope.submitViaHttp = function () {
         // $("#onlineSubmitLink").css("pointer-events", "none");
+        $scope.buttonClicked = true;
         $("#onlineSubmitLink").prop("disabled", true);
 
         var promise;
@@ -2070,6 +2071,7 @@ angular
             }
           })
           .error(function () {
+            $scope.buttonClicked = false;
             $state.go("root.submit", {
               retry: $stateParams.retry
                 ? parseInt($stateParams.retry, 10) + 1
