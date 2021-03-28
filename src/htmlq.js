@@ -1290,7 +1290,6 @@ angular
                         );
                         successCounter += 1;
                         if (successCounter === storedSorts.length) {
-                          $("#submitLocalToFirebaseBtn").prop("disabled", true);
                           $("#firebaseUploadMessage").text(firebaseText1);
                           $("#clearLocalStorageLabel").show();
                           $("#passwordLabel").show();
