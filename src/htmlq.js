@@ -1296,6 +1296,13 @@ angular
                           // Delete Q sorts from local memory
                           localStorage.setItem("storedSorts", "[]");
 
+                          // success display
+                          setTimeout(function () {
+                            $("#firebaseUploadMessage").text("");
+                            $("#submitLocalToFirebaseBtn").hide();
+                            $("#numSavedSorts").text("0");
+                          }, 5000);
+
                           // $("#clearLocalStorageLabel").show();
                           // $("#passwordLabel").show();
                           // $("#passwordInput").show();
