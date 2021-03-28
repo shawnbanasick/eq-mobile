@@ -1290,21 +1290,26 @@ angular
                         );
                         successCounter += 1;
                         if (successCounter === storedSorts.length) {
+                          // Display "Success" message
                           $("#firebaseUploadMessage").text(firebaseText1);
-                          $("#clearLocalStorageLabel").show();
-                          $("#passwordLabel").show();
-                          $("#passwordInput").show();
-                          $("#clearAppMemoryButton").show();
+
+                          // Delete Q sorts from local memory
+                          localStorage.setItem("storedSorts", "[]");
+
+                          // $("#clearLocalStorageLabel").show();
+                          // $("#passwordLabel").show();
+                          // $("#passwordInput").show();
+                          // $("#clearAppMemoryButton").show();
                         }
                       }
                     });
                   })
                   .catch((error) => {
+                    // re-enable the submission button
                     $scope.storedButtonClicked = false;
-
+                    // display error codes
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    // ...
                     console.log(errorCode, errorMessage);
                     var $message1 = $("#firebaseUploadMessage");
                     $message1.text(language.loginNoConnection);
