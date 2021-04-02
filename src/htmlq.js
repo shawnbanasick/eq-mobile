@@ -1261,6 +1261,14 @@ angular
           : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
 
+      $scope.clearServiceWorker = () =>
+        navigator.serviceWorker
+          .getRegistrations()
+          .then((registrations) =>
+            Promise.all(registrations.map((r) => r.unregister()))
+          )
+          .then(() => window.location.reload());
+
       $scope.submitLocalToFirebase = function () {
         if (navigator.onLine === true) {
           let successCounter = 0;
