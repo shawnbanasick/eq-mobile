@@ -53,14 +53,6 @@ const appShellFiles = [
   "apple-launch-1668x2224.png",
 ];
 
-const forceReload = () =>
-  navigator.serviceWorker
-    .getRegistrations()
-    .then((registrations) =>
-      Promise.all(registrations.map((r) => r.unregister()))
-    )
-    .then(() => window.location.reload());
-
 // Installing Service Worker
 self.addEventListener("install", (e) => {
   console.log("[Service Worker] Install");
