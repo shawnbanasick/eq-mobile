@@ -1,5 +1,5 @@
 // Files to cache
-const cacheName = "eq-mobile-v6";
+const cacheName1 = "eq-mobile-v6";
 const appShellFiles = [
   "/",
   "index.html",
@@ -58,17 +58,34 @@ self.addEventListener("install", (e) => {
   console.log("[Service Worker] Install");
   e.waitUntil(
     (async () => {
-      const cache = await caches.open(cacheName);
+      const cache = await caches.open(cacheName1);
       console.log("[Service Worker] Caching all: app shell and content");
       await cache
         .addAll(appShellFiles)
         .then(() => {
           // At this point, `cache` will be populated with `Response` objects,
           // and `requests` contains the `Request` objects that were used.
+          console.log("all files cached");
         })
         .catch((error) => console.error(`load fail! ${error}`));
     })()
   );
+});
+
+// The activate handler takes care of cleaning up old caches.
+self.addEventListener("activate", (event) => {
+  const currentCaches = [cacheName1];
+  event.waitUntil(async () => {
+    const cachesToDelete = await (await caches.keys()).filter(
+      (cacheName) => !currentCaches.includes(cacheName)
+    );
+    await Promise.all(
+      cachesToDelete.map((cacheToDelete) => {
+        return caches.delete(cacheToDelete);
+      })
+    );
+    await self.clients.claim();
+  });
 });
 
 // Fetching content using Service Worker
