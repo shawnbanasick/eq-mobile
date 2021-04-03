@@ -1203,9 +1203,10 @@ angular
     "$state",
     function (config, language, UserCode, $http, $scope, $state) {
       $("#clearLocalStorageLabel").hide();
+      $("#clearCacheButton").hide();
       $("#passwordLabel").hide();
       $("#passwordInput").hide();
-      $("#clearAppMemoryButton").hide();
+      $("#clearCacheText").hide();
 
       var storedSorts = JSON.parse(localStorage.getItem("storedSorts"));
       if (storedSorts === null || storedSorts === undefined) {
@@ -1241,9 +1242,10 @@ angular
           $("#clearLocalStorageLabel").hide();
           $("#passwordLabel").hide();
           $("#passwordInput").hide();
-          $("#clearAppMemoryButton").hide();
+          $("#clearCacheButton").hide();
           $("#submitLocalToFirebaseBtn").hide();
           $("#firebaseUploadMessage").text("");
+          $("#clearCacheText").hide();
         } else {
           $("#passwordInput").css("background-color", "lightpink");
         }
@@ -1261,13 +1263,47 @@ angular
           : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
 
-      $scope.clearServiceWorker = () =>
-        navigator.serviceWorker
-          .getRegistrations()
-          .then((registrations) =>
-            Promise.all(registrations.map((r) => r.unregister()))
-          )
-          .then(() => window.location.reload());
+      $scope.showServiceWorkerClear = () => {
+        console.log("show clear");
+        $("#passwordLabel").toggle();
+        $("#passwordInput").toggle();
+        $("#clearCacheButton").toggle();
+        $("#clearCacheText").toggle();
+      };
+
+      $scope.clearServiceWorker = () => {
+        var userInput = $("#passwordInput").val();
+
+        if (userInput === config.clearCachePassword) {
+          console.log(userInput);
+          $("#passwordInput").css("background-color", "white");
+          /* localStorage.setItem("storedSorts", "[]");
+          $("#numSavedSorts").text("0");
+          $("#clearLocalStorageLabel").hide();
+          $("#passwordLabel").hide();
+          $("#passwordInput").hide();
+          $("#clearCacheButton").hide();
+          $("#submitLocalToFirebaseBtn").hide();
+          $("#firebaseUploadMessage").text("");
+          $("#clearCacheText").hide();
+          
+          $("#passwordLabel").hide();
+          $("#passwordInput").hide();
+          $("#clearCacheText").hide();
+          
+          */
+          console.log("cleared");
+
+          return navigator.serviceWorker
+            .getRegistrations()
+            .then((registrations) =>
+              Promise.all(registrations.map((r) => r.unregister()))
+            )
+            .then(() => window.location.reload());
+        } else {
+          $("#passwordInput").css("background-color", "lightpink");
+        }
+      };
 
       $scope.submitLocalToFirebase = function () {
         if (navigator.onLine === true) {
@@ -1314,7 +1350,7 @@ angular
                           // $("#clearLocalStorageLabel").show();
                           // $("#passwordLabel").show();
                           // $("#passwordInput").show();
-                          // $("#clearAppMemoryButton").show();
+                          // $("#clearCacheButton").show();
                         }
                       }
                     });

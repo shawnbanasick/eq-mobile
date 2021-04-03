@@ -16,6 +16,10 @@
      <!-- login with common password (leave blank if not required) -->
      <item id="loginPassword">test</item>
     <item id="partNameRequired">true</item>
+    
+    <item id="clearCachePassword">cleareqmobilecache</item>
+    
+    
       <!-- URL to individual login script(leave blank if not required) -->
      <item id="loginUrl"></item>
      <!-- request mode (post|get) -->

@@ -33,7 +33,7 @@
         <item id="loginHead">Access Code</item>
         <item id="loginText">Please enter the access code for this survey.</item>
         <item id="loginFormHeader">Access Code</item>
-        <item id="loginPartIdText">Your name or survey id number</item>
+        <item id="loginPartIdText">Participant name or survey id number</item>
         <item id="loginNoInput">Please enter the access code.</item>
         <item id="loginInvalidInput">Access code invalid</item>
         <item id="loginNoConnection">Connection to server failed. Please try again.</item>
@@ -44,10 +44,16 @@
         <item id="loginReturnToControl">Return to Control Screen</item>
         <item id="loginSendQsortsToFirebase">Send Stored Q Sorts to Firebase</item>
         <item id="loginFirebaseSuccess">Success - All Stored Q Sorts Sent to Firebase</item>
-        <item id="loginClearAppMemory">Clear App Memory</item>
         <item id="loginRememberAutolock">Remember to Turn Off Auto Screen Lock Before Start</item>
         <item id="loginDoScreenCapture">Always Do a Screen Capture of Q Sorts as Backup</item>
         <item id="loginDeleteLocalQsorts">Enter Access Code to Permanently Remove Locally Stored Q Sorts</item>
+        
+
+        <item id="loginCachePasswordLabel">Clear Cache Password</item>
+        <item id="loginClearCacheButton">Clear</item>
+        <item id="loginShowClearCacheButton">Clear Cache</item>
+        <item id="loginClearCacheText">This will delete all of the cached files from the iPad memory and allow
+        an update to the project.</item>
 
     
         <!-- introduction (leave blank to skip popup) -->

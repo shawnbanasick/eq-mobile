@@ -99,11 +99,23 @@
           margin-top: 60px;
         "
       ></span>
+      <button
+        class="btn btn-default"
+        id="showServiceWorkerClearButton"
+        style="margin-left: -20px; margin-top: 50px; display: block"
+        ng-click="showServiceWorkerClear()"
+        ng-bind-html="language.loginShowClearCacheButton"
+      ></button>
+      <p
+        style="margin-top: 10px"
+        id="clearCacheText"
+        ng-bind-html="language.loginClearCacheText"
+      ></p>
       <label
         for="password"
         id="passwordLabel"
-        ng-bind-html="language.loginFormHeader"
-        style="margin-top: 10px; display: inline-block"
+        ng-bind-html="language.loginCachePasswordLabel"
+        style="margin-top: 10px; margin-bottom: 10px; display: inline-block"
       ></label>
       <input
         autocapitalize="off"
@@ -112,31 +124,13 @@
         autocomplete="off"
         style="width: 400px; display: inline-block"
       />
-      <button
-        class="btn btn-default"
-        id="clearServiceWorkerButton"
-        style="
-          margin-left: 30px;
-          margin-top: 0px;
-          background-color: #209cee;
-          color: white;
-        "
-        ng-click="clearServiceWorker()"
-      >
-        Clear Service Worker
-      </button>
 
       <button
         class="btn btn-default"
-        id="clearAppMemoryButton"
-        style="
-          margin-left: 30px;
-          margin-top: 0px;
-          background-color: #209cee;
-          color: white;
-        "
-        ng-click="clearLocalstorage()"
-        ng-bind-html="language.loginClearAppMemory"
+        id="clearCacheButton"
+        style="margin-left: 10px; margin-top: -4px"
+        ng-click="clearServiceWorker()"
+        ng-bind-html="language.loginClearCacheButton"
       ></button>
     </div>
   </div>
