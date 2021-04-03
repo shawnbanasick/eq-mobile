@@ -14,7 +14,7 @@
      <!-- login required (true|false) -->
      <item id="loginrequired">true</item>
      <!-- login with common password (leave blank if not required) -->
-     <item id="loginPassword">test</item>
+     <item id="loginPassword">access</item>
     <item id="partNameRequired">true</item>
     
     <item id="clearCachePassword">cleareqmobilecache</item>
