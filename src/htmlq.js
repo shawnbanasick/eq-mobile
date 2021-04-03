@@ -1292,9 +1292,18 @@ angular
           $("#clearCacheText").hide();
           
           */
+
           console.log("cleared");
 
-          return navigator.serviceWorker
+          if ("serviceWorker" in navigator) {
+            caches.keys().then(function (cacheNames) {
+              cacheNames.forEach(function (cacheName) {
+                caches.delete(cacheName);
+              });
+            });
+          }
+
+          navigator.serviceWorker
             .getRegistrations()
             .then((registrations) =>
               Promise.all(registrations.map((r) => r.unregister()))
