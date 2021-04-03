@@ -44,8 +44,8 @@
         <item id="loginReturnToControl">Return to Control Screen</item>
         <item id="loginSendQsortsToFirebase">Send Stored Q Sorts to Firebase</item>
         <item id="loginFirebaseSuccess">Success - All Stored Q Sorts Sent to Firebase</item>
-        <item id="loginRememberAutolock">1 Remember to Turn Off Auto Screen Lock Before Start</item>
-        <item id="loginDoScreenCapture">2 Always Do a Screen Capture of Q Sorts as Backup</item>
+        <item id="loginRememberAutolock">Remember to Turn Off Auto Screen Lock Before Start</item>
+        <item id="loginDoScreenCapture">Always Do a Screen Capture of Q Sorts as Backup</item>
         <item id="loginDeleteLocalQsorts">Enter Access Code to Permanently Remove Locally Stored Q Sorts</item>
         
 
